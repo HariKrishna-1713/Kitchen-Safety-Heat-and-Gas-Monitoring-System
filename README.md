@@ -360,7 +360,7 @@ flowchart TD
 
 | First-boot SET PASSWORD | Masked ENTER PASSWORD |
 |---|---|
-| ![SET PASSWORD prompt on first boot](Project_Images/setting_password.jpeg) | ![ENTER PASSWORD prompt with masked digits](Project_Images/Masked_Password.jpeg) |
+| ![SET PASSWORD prompt on first boot](Project_Images/Set_Password.jpeg) | ![ENTER PASSWORD prompt with masked digits](Project_Images/Masked_Password.jpeg) |
 
 **LCD output — a wrong attempt vs. the lockout after the third failure:**
 
