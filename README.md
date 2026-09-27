@@ -713,6 +713,6 @@ Per the supplied specification, this project follows:
 <details>
 <summary><h2>Author</h2></summary>
 
-**Koteswar Rao Golagani (Hari)**
+**Koteswar Rao Golagani**
 
 </details>
