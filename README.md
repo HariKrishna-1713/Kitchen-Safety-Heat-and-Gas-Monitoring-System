@@ -571,7 +571,7 @@ Kitchen-Safety-Heat-Gas-Monitoring/
 ├── docs/
 │   ├── project-specification.pdf
 │   └── images/
-│       └── (block diagram + LCD output screenshots)
+│       └── (LCD output screenshots)
 │
 ├── proteus/
 │   └── simulation files
