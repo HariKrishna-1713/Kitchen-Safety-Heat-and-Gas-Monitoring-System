@@ -125,6 +125,7 @@ flowchart LR
 </details>
 
 ---
+---
 
 <a id="hardware-setup"></a>
 <details>
@@ -141,6 +142,9 @@ Built on the Vector Advanced Development Board for ARM7 (LPC2148):
 - On-board buzzer and ADC section for LM35/MQ2 sensor inputs
 
 Refer to the [Block Diagram](#block-diagram) above for how these are logically connected.
+
+![Full hardware setup on the Vector ARM7 development board](docs/images/32-full-hardware-setup.jpeg)
+*Complete bring-up on the Vector Advanced Development Board for ARM7 (LPC2148) — RTC/UART module, 16x2 LCD, 4x4 matrix keypad, active-high/active-low switch and LED banks, and the buzzer/ADC section, all wired and running normal monitoring.*
 
 </details>
 
@@ -265,31 +269,22 @@ flowchart TD
 
 **Sample LCD output — normal monitoring vs. an unsafe temperature event:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│12:14:29 SAT70C   │    │UNSAFE            │
-│25/09/26          │    │TEMP IS HIGH      │
-└──────────────────┘    └──────────────────┘
-```
+| Normal monitoring | Unsafe temperature event |
+|---|---|
+| ![Normal monitoring screen showing time, day and date](docs/images/18-normal-monitoring.jpeg) | ![UNSAFE TEMP IS HIGH alert on the LCD](docs/images/17-unsafe-temp-high.jpeg) |
 
 **Sample LCD output — normal monitoring vs. an unsafe gas event:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│12:17:40 SAT30C   │    │UNSAFE            │
-│25/09/26 GAS:1    │    │GAS IS HIGH       │
-└──────────────────┘    └──────────────────┘
-```
+| Normal monitoring (GAS:0) | Unsafe gas event |
+|---|---|
+| ![Normal monitoring with live temperature and GAS:0 status](docs/images/21-normal-monitoring-gas0.jpeg) | ![UNSAFE GAS IS HIGH alert on the LCD](docs/images/22-unsafe-gas-high.jpeg) |
 
 **Sample LCD output — recent-event screen after a gas event, then back to normal:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│12:17:40 SAT      │    │12:17:43 SAT30C   │
-│25/09/26 GAS:1    │    │25/09/26 GAS:0    │
-└──────────────────┘    └──────────────────┘
-```
-<img src="Project_Images/WhatsApp%20Image%202026-09-25%20at%2015.42.57%20(1).jpeg" alt="Project Image">
+| Recent-event screen (GAS:1) | Back to normal monitoring |
+|---|---|
+| ![Recent event screen showing GAS:1 after an unsafe gas event](docs/images/23-recent-event-gas1.jpeg) | ![Normal monitoring after the alarm clears, GAS:0](docs/images/24-normal-monitoring-3.jpeg) |
+
 </details>
 
 ---
@@ -361,23 +356,17 @@ flowchart TD
     LOCK --> PV
 ```
 
-**Sample LCD output — first-boot setup vs. later authentication:**
+**LCD output — first-boot setup vs. later authentication:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│SET PASSWORD      │    │ENTER             │
-│----              │    │PASSWORD ****     │
-└──────────────────┘    └──────────────────┘
-```
+| First-boot SET PASSWORD | Masked ENTER PASSWORD |
+|---|---|
+| ![SET PASSWORD prompt on first boot](docs/images/26-set-password-first-boot.jpeg) | ![ENTER PASSWORD prompt with masked digits](docs/images/27-enter-password-masked.jpeg) |
 
-**Sample LCD output — a wrong attempt vs. the lockout after the third failure:**
+**LCD output — a wrong attempt vs. the lockout after the third failure:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│PASSWORD NOT      │    │ACCESS DENIED     │
-│MATCH             │    │SYS LOCKED 10s    │
-└──────────────────┘    └──────────────────┘
-```
+| Wrong password entered | Lockout after 3 failures |
+|---|---|
+| ![PASSWORD NOT MATCH message](docs/images/16-password-not-match.jpeg) | ![ACCESS DENIED, SYS LOCKED with countdown](docs/images/33-access-denied-lockout.jpeg) |
 
 ### Password Input
 
@@ -419,39 +408,27 @@ After successful authentication, `Setting()` manages the protected configuration
 
 **Sample LCD output — top-level menu, SetRTC submenu, and the HOUR/MIN/SEC submenu:**
 
-```
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│1.SetRTC 3.RsetP  │  │1.SETTIME 3.SetD  │  │1.HOUR   3.SEC    │
-│2.SetP   4.EXIT   │  │2.SetDate 4.Back  │  │2.MIN    4.BACK   │
-└──────────────────┘  └──────────────────┘  └──────────────────┘
-```
+| Top-level menu | SetRTC submenu | HOUR/MIN/SEC submenu |
+|---|---|---|
+| ![Top-level settings menu: SetRTC, SetP, RsetP, EXIT](docs/images/30-settings-menu.jpeg) | ![SetRTC submenu: SETTIME, SetDate, SetD, Back](docs/images/31-setrtc-submenu.jpeg) | ![Time submenu: HOUR, MIN, SEC, BACK](docs/images/29-time-submenu.jpeg) |
 
 **Sample LCD output — hour and minute entry, each followed by its confirmation:**
 
-```
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│SET HOUR          │  │HOUR SET          │  │SET MIN           │  │MIN SET           │
-│12                │  │                  │  │10                │  │                  │
-└──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘
-```
+| SET HOUR | HOUR SET | SET MIN | MIN SET |
+|---|---|---|---|
+| ![SET HOUR entry with cursor](docs/images/01-set-hour.jpeg) | ![HOUR SET confirmation](docs/images/02-hour-set.jpeg) | ![SET MIN entry](docs/images/04-set-min.jpeg) | ![MIN SET confirmation](docs/images/03-min-set.jpeg) |
 
 **Sample LCD output — date submenu, then day-of-month and month entry with confirmation:**
 
-```
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│1.DOM    3.YEAR   │  │SET DOM           │  │SET MONTH         │  │MONTH SET         │
-│2.MON    4.BACK   │  │25                │  │09                │  │                  │
-└──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘
-```
+| Date submenu | SET DOM | SET MONTH | MONTH SET |
+|---|---|---|---|
+| ![Date submenu: DOM, MON, YEAR, BACK](docs/images/05-date-menu.jpeg) | ![SET DOM entry](docs/images/08-set-dom.jpeg) | ![SET MONTH entry](docs/images/06-set-month.jpeg) | ![MONTH SET confirmation](docs/images/07-month-set.jpeg) |
 
 **Sample LCD output — year entry and confirmation, completing the date fields:**
 
-```
-┌──────────────────┐    ┌──────────────────┐
-│SET YEAR          │    │YEAR SET          │
-│26                │    │                  │
-└──────────────────┘    └──────────────────┘
-```
+| SET YEAR | YEAR SET |
+|---|---|
+| ![SET YEAR entry](docs/images/10-set-year.jpeg) | ![YEAR SET confirmation](docs/images/09-year-set.jpeg) |
 
 The year is entered and stored as its **last two digits only** (e.g. `26` for 2026).
 
@@ -476,12 +453,9 @@ Handled by `SetThreshold()` — supports digit entry, delete-previous-digit, cle
 
 **Sample LCD output — threshold prompt, digit entry, and confirmation:**
 
-```
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│SET TEMP LIMIT    │  │SET TEMP LIMIT    │  │TEMP LIMIT SET    │
-│                  │  │68                │  │68                │
-└──────────────────┘  └──────────────────┘  └──────────────────┘
-```
+| Threshold prompt | Digit entry in progress | Confirmed |
+|---|---|---|
+| ![SET TEMP LIMIT prompt, entry not yet started](docs/images/12-set-temp-limit-prompt.jpeg) | ![SET TEMP LIMIT with digits being entered](docs/images/11-set-temp-limit-entry.jpeg) | ![TEMP LIMIT SET confirmation](docs/images/13-temp-limit-set.jpeg) |
 
 ### Password Reset
 
@@ -497,12 +471,9 @@ flowchart TD
 
 **Sample LCD output — reset entry, confirmation entry, and completion:**
 
-```
-┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
-│RESET PASSWORD    │  │CONFIRM           │  │PASSWORD          │
-│                  │  │PASSWORD          │  │RESET             │
-└──────────────────┘  └──────────────────┘  └──────────────────┘
-```
+| Reset entry point | Confirm new password | Reset completed |
+|---|---|---|
+| ![RESET PASSWORD prompt](docs/images/15-reset-password-prompt.jpeg) | ![CONFIRM PASSWORD prompt](docs/images/14-confirm-password.jpeg) | ![PASSWORD RESET confirmation](docs/images/19-password-reset-done.jpeg) |
 
 </details>
 
@@ -602,7 +573,9 @@ Kitchen-Safety-Heat-Gas-Monitoring/
 │   └── project header files
 │
 ├── docs/
-│   └── project-specification.pdf
+│   ├── project-specification.pdf
+│   └── images/
+│       └── (block diagram + LCD output screenshots)
 │
 ├── proteus/
 │   └── simulation files
