@@ -451,7 +451,7 @@ Handled by `SetThreshold()` — supports digit entry, delete-previous-digit, cle
 
 | Threshold prompt | Digit entry in progress | Confirmed |
 |---|---|---|
-| ![SET TEMP LIMIT prompt, entry not yet started](docs/images/12-set-temp-limit-prompt.jpeg) | ![SET TEMP LIMIT with digits being entered](docs/images/11-set-temp-limit-entry.jpeg) | ![TEMP LIMIT SET confirmation](docs/images/13-temp-limit-set.jpeg) |
+| <img src="Project_Images/SET_TEMP.jpeg" width="380"> | <img src="Project_Images/ENTER_TEMP_VALUE.jpeg" width="380"> |<img src="Project_Images/TEMP_LIMIT_SET.jpeg" width="380"> |
 
 ### Password Reset
 
@@ -469,7 +469,7 @@ flowchart TD
 
 | Reset entry point | Confirm new password | Reset completed |
 |---|---|---|
-| ![RESET PASSWORD prompt](docs/images/15-reset-password-prompt.jpeg) | ![CONFIRM PASSWORD prompt](docs/images/14-confirm-password.jpeg) | ![PASSWORD RESET confirmation](docs/images/19-password-reset-done.jpeg) |
+| <img src="Project_Images/RESET_PASSWORD.jpeg" width="380"> | <img src="Project_Images/CONFORM_PASSWORD.jpeg" width="380"> |<img src="Project_Images/PASSWORD_RESETTED.jpeg" width="380"> |
 
 </details>
 
