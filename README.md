@@ -360,13 +360,13 @@ flowchart TD
 
 | First-boot SET PASSWORD | Masked ENTER PASSWORD |
 |---|---|
-| ![SET PASSWORD prompt on first boot](Project_Images/Set_Password.jpeg) | ![ENTER PASSWORD prompt with masked digits](Project_Images/Masked_Password.jpeg) |
+| ![SET PASSWORD prompt on first boot](<img src="Project_Images/Set_Password.jpeg" width="380">) | ![ENTER PASSWORD prompt with masked digits](<img src="Project_Images/Masked_Password.jpeg" width="380">) |
 
 **LCD output — a wrong attempt vs. the lockout after the third failure:**
 
 | Wrong password entered | Lockout after 3 failures |
 |---|---|
-| ![PASSWORD NOT MATCH message](Project_Images/Access_denied.jpeg) | ![ACCESS DENIED, SYS LOCKED with countdown](Project_Images/System_Locked.jpeg) |
+| ![PASSWORD NOT MATCH message](<img src="Project_Images/Access_denied.jpeg" width="380">) | ![ACCESS DENIED, SYS LOCKED with countdown](<img src="Project_Images/System_Locked.jpeg" width="380">) |
 
 ### Password Input
 
