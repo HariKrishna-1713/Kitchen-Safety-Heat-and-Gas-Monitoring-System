@@ -267,23 +267,23 @@ flowchart TD
     H --> I[Buzzer ON]
 ```
 
-**Sample LCD output — normal monitoring vs. an unsafe temperature event:**
+**LCD output — normal monitoring vs. an unsafe temperature event:**
 
 | Normal monitoring | Unsafe temperature event |
 |---|---|
-| ![Normal monitoring screen showing time, day and date](docs/images/18-normal-monitoring.jpeg) | ![UNSAFE TEMP IS HIGH alert on the LCD](docs/images/17-unsafe-temp-high.jpeg) |
+| <img src="Project_Images/Normal_Lcd_Screen.jpeg" width="380"> | <img src="Project_Images/Temp_High.jpeg" width="380"> |
 
-**Sample LCD output — normal monitoring vs. an unsafe gas event:**
+**LCD output — normal monitoring vs. an unsafe gas event:**
 
 | Normal monitoring (GAS:0) | Unsafe gas event |
 |---|---|
-| ![Normal monitoring with live temperature and GAS:0 status](docs/images/21-normal-monitoring-gas0.jpeg) | ![UNSAFE GAS IS HIGH alert on the LCD](docs/images/22-unsafe-gas-high.jpeg) |
+| <img src="Project_Images/Normal_Lcd_Screen.jpeg" width="380"> | <img src="Project_Images/Gas_High.jpeg" width="380"> |
 
-**Sample LCD output — recent-event screen after a gas event, then back to normal:**
+**LCD output — recent-event screen after a gas event, then back to normal:**
 
 | Recent-event screen (GAS:1) | Back to normal monitoring |
 |---|---|
-| ![Recent event screen showing GAS:1 after an unsafe gas event](docs/images/23-recent-event-gas1.jpeg) | ![Normal monitoring after the alarm clears, GAS:0](docs/images/24-normal-monitoring-3.jpeg) |
+| <img src="Project_Images/Set_Password.jpeg" width="380"> | <img src="Project_Images/Normal_Lcd_Screen.jpeg" width="380"> |
 
 </details>
 
