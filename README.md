@@ -135,16 +135,13 @@ Built on the Vector Advanced Development Board for ARM7 (LPC2148):
 
 - LPC2148 target with on-board RTC crystal and reset/power-supply section
 - RS-232/UART module wired in for programming and debug
-- 16×2 LCD (`JHD 162A`) in 8-bit mode, `D0`–`D7` wired to the LCD data header, `RS`/`EN` from dedicated control pins
+- 16×2 LCD in 8-bit mode, `D0`–`D7` wired to the LCD data header, `RS`/`EN` from dedicated control pins
 - 4×4 matrix keypad for menu navigation and password/threshold entry
 - Active-HIGH switch bank (`SW1`–`SW4`) and Active-LOW switch bank (`SW5`–`SW8`), used for Switch1/Switch2
 - LED banks (`LED1`–`LED8`) for safety indication
 - On-board buzzer and ADC section for LM35/MQ2 sensor inputs
 
 Refer to the [Block Diagram](#block-diagram) above for how these are logically connected.
-
-![Full hardware setup on the Vector ARM7 development board](docs/images/32-full-hardware-setup.jpeg)
-*Complete bring-up on the Vector Advanced Development Board for ARM7 (LPC2148) — RTC/UART module, 16x2 LCD, 4x4 matrix keypad, active-high/active-low switch and LED banks, and the buzzer/ADC section, all wired and running normal monitoring.*
 
 </details>
 
@@ -405,29 +402,29 @@ After successful authentication, `Setting()` manages the protected configuration
 4. Back
 ```
 
-**Sample LCD output — top-level menu, SetRTC submenu, and the HOUR/MIN/SEC submenu:**
+**LCD output — top-level menu, SetRTC submenu, and the HOUR/MIN/SEC submenu:**
 
 | Top-level menu | SetRTC submenu | HOUR/MIN/SEC submenu |
 |---|---|---|
-| ![Top-level settings menu: SetRTC, SetP, RsetP, EXIT](docs/images/30-settings-menu.jpeg) | ![SetRTC submenu: SETTIME, SetDate, SetD, Back](docs/images/31-setrtc-submenu.jpeg) | ![Time submenu: HOUR, MIN, SEC, BACK](docs/images/29-time-submenu.jpeg) |
+| <img src="Project_Images/Menu.jpeg" width="380"> | <img src="Project_Images/SET_RTC.jpeg" width="380"> |<img src="Project_Images/SET_TIME.jpeg" width="380"> |
 
-**Sample LCD output — hour and minute entry, each followed by its confirmation:**
+**LCD output — hour and minute entry, each followed by its confirmation:**
 
 | SET HOUR | HOUR SET | SET MIN | MIN SET |
 |---|---|---|---|
-| ![SET HOUR entry with cursor](docs/images/01-set-hour.jpeg) | ![HOUR SET confirmation](docs/images/02-hour-set.jpeg) | ![SET MIN entry](docs/images/04-set-min.jpeg) | ![MIN SET confirmation](docs/images/03-min-set.jpeg) |
+| <img src="Project_Images/SET_HOUR.jpeg" width="380"> | <img src="Project_Images/HOUR_SET.jpeg" width="380"> |<img src="Project_Images/SET_MIN.jpeg" width="380"> | <img src="Project_Images/MIN_SET.jpeg" width="380"> | 
 
-**Sample LCD output — date submenu, then day-of-month and month entry with confirmation:**
+**LCD output — date submenu, then day-of-month and month entry with confirmation:**
 
 | Date submenu | SET DOM | SET MONTH | MONTH SET |
 |---|---|---|---|
-| ![Date submenu: DOM, MON, YEAR, BACK](docs/images/05-date-menu.jpeg) | ![SET DOM entry](docs/images/08-set-dom.jpeg) | ![SET MONTH entry](docs/images/06-set-month.jpeg) | ![MONTH SET confirmation](docs/images/07-month-set.jpeg) |
+| <img src="Project_Images/SET_DATE.jpeg" width="380"> | <img src="Project_Images/SET_DOM.jpeg" width="380"> |<img src="Project_Images/SET_MON.jpeg" width="380"> | <img src="Project_Images/MONTH_SET.jpeg" width="380"> | 
 
 **Sample LCD output — year entry and confirmation, completing the date fields:**
 
 | SET YEAR | YEAR SET |
 |---|---|
-| ![SET YEAR entry](docs/images/10-set-year.jpeg) | ![YEAR SET confirmation](docs/images/09-year-set.jpeg) |
+| <img src="Project_Images/SET_YEAR.jpeg" width="380"> | <img src="Project_Images/YEAR_SET.jpeg" width="380"> |
 
 The year is entered and stored as its **last two digits only** (e.g. `26` for 2026).
 
