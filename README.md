@@ -283,7 +283,7 @@ flowchart TD
 
 | Recent-event screen (GAS:1) | Back to normal monitoring |
 |---|---|
-| <img src="Project_Images/Set_Password.jpeg" width="380"> | <img src="Project_Images/Normal_Lcd_Screen.jpeg" width="380"> |
+| <img src="Project_Images/Last_Recorded_Event.jpeg" width="380"> | <img src="Project_Images/Normal_Lcd_Screen.jpeg" width="380"> |
 
 </details>
 
