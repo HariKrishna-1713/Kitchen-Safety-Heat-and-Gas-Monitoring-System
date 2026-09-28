@@ -94,7 +94,8 @@ flowchart LR
 <details>
 <summary><h2>Block Diagram</h2></summary>
 
-| <img src="Project_Images/Menu.jpeg" width="380"> | 
+<img src="Project_Images/Block_Diagram.jpeg" width="380"> 
+
 
 - **SW1** drives `EINT0`, the interrupt line that triggers EDIT MODE.
 - **MQ2** and the **4x4 KEYPAD** feed directly into the LPC2148.
@@ -110,7 +111,8 @@ flowchart LR
 <a id="hardware-setup"></a>
 <details>
 <summary><h2>Hardware Setup</h2></summary>
-| <img src="Project_Images/Hardware.jpg" width="380"> | 
+<img src="Project_Images/Hardware.jpeg" width="380">
+
 Built on the Vector Advanced Development Board for ARM7 (LPC2148):
 
 - LPC2148 target with on-board RTC crystal and reset/power-supply section
