@@ -5,13 +5,6 @@
 
 int main()
 {
-	
-	/*char* p=(char*)SECTOR_ADDR;
-	char arr[10], arr1[10];
-	WRITE_DATA_TO_FLASH();
-	strcpy(arr,p);
-	strcpy(arr1,p+5);*/
-	
 	Init_RTC();
 	Init_LCD();
 	Init_KPM();
