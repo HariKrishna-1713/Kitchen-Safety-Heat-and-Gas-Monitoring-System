@@ -279,12 +279,4 @@ u32 LM35TempC(void)
 	return(eAR*100);
 }	
 
-u32 MQ2GasLevel_ppm(void)
-{
-    u32 dval;
-    f32 eAR;
-    Read_ADC(2, &dval, &eAR);
-   
-		return 1023-dval;
-    //return (dval * (10000-200))/1023 + 200;
-}
+
