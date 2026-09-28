@@ -56,7 +56,7 @@ s8 weekdays[][4]={"SUN","MON","TUE","WED","THU","FRI","SAT"};
 void Init_RTC(void)
 {
        CCR = RTC_RESET;
-			 CCR = RTC_ENABLE | RTC_CLKSRC;
+	   CCR = RTC_ENABLE | RTC_CLKSRC;
 }
 
 
@@ -90,14 +90,14 @@ char *ReadPassword(void)
         }
         else if(key == '-')
 				{
-                                        if(cnt>0)
-                                        {
-                                                        pwd[cnt--] = (char)key;
-                                                        WRITE_LCD_CMD(GOTO_LINE2_POS0+cnt);
-                                                        WRITE_LCD_DATA(' ');
-                                                        WRITE_LCD_CMD(GOTO_LINE2_POS0+cnt);
-                                        }
-                                }
+                     if(cnt>0)
+                     {
+                          pwd[cnt--] = (char)key;
+                          WRITE_LCD_CMD(GOTO_LINE2_POS0+cnt);
+                          WRITE_LCD_DATA(' ');
+                          WRITE_LCD_CMD(GOTO_LINE2_POS0+cnt);
+                      }
+                }
         else if(cnt < MAX_PWD_LEN)   // only accept a digit if there's still room
         {
             pwd[cnt] = (char)key;
@@ -105,11 +105,11 @@ char *ReadPassword(void)
 
             WRITE_LCD_DATA(key);
             delay_ms(100);
-						WRITE_LCD_CMD(GOTO_LINE2_POS0 + cnt-1);
+			WRITE_LCD_CMD(GOTO_LINE2_POS0 + cnt-1);
             WRITE_LCD_DATA('*');
-						WRITE_LCD_CMD(GOTO_LINE2_POS0 + cnt);
+			WRITE_LCD_CMD(GOTO_LINE2_POS0 + cnt);
 						
-						pwd[cnt] = '\0';
+			pwd[cnt] = '\0';
         }
     }
 
@@ -229,9 +229,9 @@ u32 GetGasStatus(void)
 //Digital gas sensor: HIGH = gas present, LOW = gas absent.
 
 		if((IOPIN0 >> GAS_PIN)&1)
-        return 0;
-    else
-        return 1;
+            return 0;
+        else
+            return 1;
 }
 
 /* Update live sensor data, evaluate safety thresholds, and control alarm outputs. */
@@ -243,10 +243,10 @@ void DisplaySensorReading(void)
     WRITE_LCD_DATA(0xDF);                  // degree symbol
     WRITE_LCD_DATA('C');
 
-		WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);
-		StrLCD("GAS:");
-		GasLevel = GetGasStatus();
-		WRITE_LCD_DATA(GasLevel + '0');
+    WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);
+	StrLCD("GAS:");
+	GasLevel = GetGasStatus();
+	WRITE_LCD_DATA(GasLevel + '0');
 
     TempUnsafe = (TempLevel > TEMP_THRESHOLD);
     GasUnsafe = (GasLevel == 1);
@@ -326,7 +326,7 @@ void DisplayEvent(void)
     tdelay_s(10);                       // arm a 10-second timer match
     while(T0MR0 != T0TC)                // loop until 10 seconds have elapsed
     {
-				if(flag) return;
+		if(flag) return;
         GetRTCTime(&hour, &min, &sec);
         DisplayRTCTime(hour, min, sec);
 
@@ -355,33 +355,33 @@ void DisplayEvent(void)
 
         if(EventType == EVENT_BOTH)
         {
-                                        WRITE_LCD_CMD(GOTO_LINE1_POS0 + 12);
-                                        u32LCD(stamp_temp);             // frozen temperature from the last event
-                                        WRITE_LCD_DATA(0xDF);
-                                        WRITE_LCD_DATA('C');
+                WRITE_LCD_CMD(GOTO_LINE1_POS0 + 12);
+                u32LCD(stamp_temp);             // frozen temperature from the last event
+                WRITE_LCD_DATA(0xDF);
+                WRITE_LCD_DATA('C');
 
-                                        WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);   // pick a free spot on your LCD layout
+                WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);   // pick a free spot on your LCD layout
 																				StrLCD("GAS:");
 																				WRITE_LCD_DATA(stamp_gas + '0');
-                                }
-                                else if(EventType == EVENT_TEMP)
-                                {
-                                        WRITE_LCD_CMD(GOTO_LINE1_POS0 + 12);
-                                        u32LCD(stamp_temp);             // frozen temperature from the last event
-                                        WRITE_LCD_DATA(0xDF);
-                                        WRITE_LCD_DATA('C');
-                                }
-                                else
-                                {
-                                        WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);   // pick a free spot on your LCD layout
-																				StrLCD("GAS:");
-																				WRITE_LCD_DATA(stamp_gas + '0');
-                                }
+         }
+         else if(EventType == EVENT_TEMP)
+         {
+                WRITE_LCD_CMD(GOTO_LINE1_POS0 + 12);
+                u32LCD(stamp_temp);             // frozen temperature from the last event
+                WRITE_LCD_DATA(0xDF);
+                WRITE_LCD_DATA('C');
+		 }
+         else
+         {
+                WRITE_LCD_CMD(GOTO_LINE2_POS0 + 9);   // pick a free spot on your LCD layout
+			    StrLCD("GAS:");
+			    WRITE_LCD_DATA(stamp_gas + '0');
+         }
 
         tdelay_s(3);                    // arm a 3-second timer match
         while(T0MR0 != T0TC)            // hold this screen for exactly 3 seconds
         {
-                                         if(flag) return;
+            if(flag) return;
             // still allow the switch to silence the buzzer even during this frozen screen
             if(!BuzzerAck && ((IOPIN0>>SW)&1))
             {
@@ -416,7 +416,7 @@ u32 SetThreshold(u32 max_digits)
             for(i = 0; i < cnt; i++)
                 value = (value * 10) + (digits[i] - 48);
 
-                                          return value;
+         return value;
         }
 
         else if(key == 'c')                // Clear all digits
@@ -483,10 +483,10 @@ u32 RTC_SetValue(void)
 
         else if(key == '=')
         {
-						if(cnt == 1)
-						{
-							return ((0*10)+(rtc_set[0] - '0'));
-						}
+		    if(cnt == 1)
+			{
+				return ((0*10)+(rtc_set[0] - '0'));
+			}
             else if(cnt == 2)
             {
                 return ((rtc_set[0] - '0') * 10) +
@@ -604,7 +604,7 @@ hour_min_sec:
                                       HOUR
                            ===================================== */
 
-											hour:case '1':
+							hour:case '1':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -635,7 +635,7 @@ hour_min_sec:
                                 StrLCD("RANGE 00-23");
 
                                 delay_s(1);
-															  goto hour;
+								goto hour;
                             }
 
                             goto hour_min_sec;
@@ -645,7 +645,7 @@ hour_min_sec:
                                       MINUTE
                            ===================================== */
 
-											min:case '2':
+							min:case '2':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -686,7 +686,7 @@ hour_min_sec:
                                       SECOND
                            ===================================== */
 
-											sec:case '3':
+							sec:case '3':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -724,7 +724,7 @@ hour_min_sec:
 
 
                         case '4':
-														WRITE_LCD_CMD(CLEAR_LCD);
+							WRITE_LCD_CMD(CLEAR_LCD);
                             goto time_menu;
                     }
 
@@ -766,7 +766,7 @@ date_menu:
                                       DATE / DOM
                            ===================================== */
 
-											Dom:case '1':
+							Dom:case '1':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -797,7 +797,7 @@ date_menu:
                                 StrLCD("RANGE 01-31");
 
                                 delay_s(1);
-															  goto Dom;
+							    goto Dom;
                             }
 
                             goto date_menu;
@@ -807,7 +807,7 @@ date_menu:
                                       MONTH
                            ===================================== */
 
-											mon:case '2':
+							mon:case '2':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -848,7 +848,7 @@ date_menu:
                                       YEAR
                            ===================================== */
 
-										 year:case '3':
+							year:case '3':
 
                             WRITE_LCD_CMD(CLEAR_LCD);
 
@@ -886,7 +886,7 @@ date_menu:
 
 
                         case '4':
-														WRITE_LCD_CMD(CLEAR_LCD);
+							WRITE_LCD_CMD(CLEAR_LCD);
                             goto time_menu;
                     }
 
@@ -947,7 +947,7 @@ date_menu:
 
                 else if(num1 == '4')
                 {
-										WRITE_LCD_CMD(CLEAR_LCD);
+					WRITE_LCD_CMD(CLEAR_LCD);
                     goto edit;
                 }
 
@@ -960,10 +960,10 @@ date_menu:
 
          case '2':
 
-								WRITE_LCD_CMD(CLEAR_LCD);
-								WRITE_LCD_CMD(GOTO_LINE1_POS0);
-								StrLCD("SET TEMP LIMIT");
-								WRITE_LCD_CMD(GOTO_LINE2_POS0);
+			    WRITE_LCD_CMD(CLEAR_LCD);
+			    WRITE_LCD_CMD(GOTO_LINE1_POS0);
+			    StrLCD("SET TEMP LIMIT");
+			    WRITE_LCD_CMD(GOTO_LINE2_POS0);
                 WRITE_LCD_CMD(DISP_ON_CUR_BLINK);
 
                 TEMP_THRESHOLD = SetThreshold(2);
@@ -1014,30 +1014,30 @@ Password:
 								
 ConformPassword:WRITE_LCD_CMD(CLEAR_LCD);
                 StrLCD("CONFORM PASSWORD");
-								WRITE_LCD_CMD(GOTO_LINE2_POS0);
-								WRITE_LCD_CMD(DISP_ON_CUR_BLINK);
+				WRITE_LCD_CMD(GOTO_LINE2_POS0);
+				WRITE_LCD_CMD(DISP_ON_CUR_BLINK);
 								
-								ConformPassword = ReadPassword();
-								if(strcmp(StoredNewPassword,ConformPassword) == 0)
+				ConformPassword = ReadPassword();
+			    if(strcmp(StoredNewPassword,ConformPassword) == 0)
                 {
                     strcpy(StoredPassword,NewPassword);
-										WRITE_LCD_CMD(CLEAR_LCD);
-										StrLCD("PASSWORD RESET");
+					WRITE_LCD_CMD(CLEAR_LCD);
+					StrLCD("PASSWORD RESET");
 
-										delay_ms(500);
+					delay_ms(500);
                 }
-								else
-								{
-										WRITE_LCD_CMD(CLEAR_LCD);
+				else
+				{
+					WRITE_LCD_CMD(CLEAR_LCD);
                     StrLCD("PASSWORD");
-										WRITE_LCD_CMD(GOTO_LINE2_POS0);
-										StrLCD("NOT MATCH");
+					WRITE_LCD_CMD(GOTO_LINE2_POS0);
+					StrLCD("NOT MATCH");
                     delay_s(1);
 
                     WRITE_LCD_CMD(CLEAR_LCD);
 
                     goto ConformPassword;
-								}
+				}
 
                 WRITE_LCD_CMD(DISP_ON_CUR_OFF);
 
@@ -1051,7 +1051,7 @@ ConformPassword:WRITE_LCD_CMD(CLEAR_LCD);
                ================================================= */
 
             case '4':
-								WRITE_LCD_CMD(CLEAR_LCD);
+				WRITE_LCD_CMD(CLEAR_LCD);
                 return;
         }
     }
